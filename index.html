@@ -1,64 +1,74 @@
 <!doctype html>
-<html lang="en" class="light">
+<html lang="en" class="scroll-smooth">
   <head>
     <meta charset="UTF-8">
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+      document.documentElement.classList.toggle('dark',
+        localStorage.theme === 'dark' || (!('theme' in localStorage) 
+        && window.matchMedia('(prefers-colors-scheme: dark)').matches))
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100..900&display=swap" rel="stylesheet">
     <title>5-fylo-website</title>
   </head>
   <body>
-    <header class=" flex flex-col md:flex-row items-center justify-between gap-8 p-6 bg-white dark:bg-slate-900">
+    <header class=" flex flex-col md:flex-row items-center justify-between gap-8 p-6 bg-white dark:bg-slate-900 dark:text-white">
       <img src="src/assets/images/logo-light-mode.svg" alt="" class="block dark:hidden w-22">
       <img src="src/assets/images/logo-dark-mode.svg" alt="" class="hidden dark:block w-22">
       <nav class="flex  items-center gap-6 font-medium">
         <ul class="flex gap-6">
           <li>
-            <a href="#">Features</a>
+            <a href="#features">Features</a>
           </li>
           <li>
-            <a href="#">Testimonials</a>
+            <a href="#testimonials">Testimonials</a>
           </li>
         </ul>
-        <button class="border border-gray-300 p-2 rounded-md">🌙</button>
+        <button class="dark-mode border border-gray-300 p-2 rounded-md" aria-pressed="false">
+          <span class="block dark:hidden text-md">🌙</span>
+          <span class="hidden dark:block text-yellow-700">☀</span>
+        </button>
       </nav>
     </header>
-    <section class="hero  py-16 px-10 relative">
-      <img src="src/assets/images/bg-curvy-light-mode.svg" alt="" class="absolute bottom-0 left-0 -z-1">
-      <div class="flex flex-col gap-6 items-center">
+    <section class="hero py-16 px-10 relative bg-white dark:bg-slate-900 dark:text-white">
+      <img src="src/assets/images/bg-curvy-light-mode.svg" alt="" class="block dark:hidden absolute bottom-0 left-0 -z-1">
+      <img src="src/assets/images/bg-curvy-dark-mode.svg" alt="" class="hidden dark:block absolute bottom-0 left-0">
+      <div class="flex flex-col gap-6 items-center relative">
         <div class="max-w-lg">
           <img src="src/assets/images/illustration-intro.png" alt="" class="object-cover">
         </div>
         <h1 class="text-2xl font-black max-w-md text-center">All your files in one secure location, assessible anywhere.</h1>
         <p class="max-w-lg text-center text-sm font-medium">Fylo stores all your most important files in one secure location. Access them wherever you need, share and collaborate with friends, family and co-workers.</p>
-        <button class="bg-cyan-300 rounded-full py-2 px-4 font-medium">Get Started</button>
+        <button class="bg-cyan-300 rounded-full py-2 px-6 font-medium text-black">Get Started</button>
       </div>
     </section>
-    <section class="features grid grid-cols-1 md:grid-cols-2 items-center gap-6 py-16 px-10">
+    <section id="features" class="grid grid-cols-1 md:grid-cols-2 place-items-center gap-6 py-16 px-10 
+    bg-gray-100 dark:bg-slate-800 dark:text-white">
       <div class="flex flex-col items-center gap-6">
-        <img src="src/assets/images/icon-access-anywhere.svg" alt="">
+        <img src="src/assets/images/icon-access-anywhere.svg" alt="" class="size-16">
         <p class="font-bold">Access your file from anywhere</p>
         <p class="text-center max-w-sm">The ability to use a smartphone, tablet or computer to access your account means your files follow you everywhere.</p>
       </div>
       <div class="flex flex-col items-center gap-6">
-        <img src="src/assets/images/icon-security.svg" alt="">
+        <img src="src/assets/images/icon-security.svg" alt="" class="size-16">
         <p class="font-bold">Access your file from anywhere</p>
         <p class="text-center max-w-sm">The ability to use a smartphone, tablet or computer to access your account means your files follow you everywhere.</p>
       </div>
       <div class="flex flex-col items-center gap-6">
-        <img src="src/assets/images/icon-collaboration.svg" alt="">
+        <img src="src/assets/images/icon-collaboration.svg" alt="" class="size-16">
         <p class="font-bold">Access your file from anywhere</p>
         <p class="text-center max-w-sm">The ability to use a smartphone, tablet or computer to access your account means your files follow you everywhere.</p>
       </div>
       <div class="flex flex-col items-center gap-6">
-        <img src="src/assets/images/icon-any-file.svg " alt="">
+        <img src="src/assets/images/icon-any-file.svg " alt="" class="size-16">
         <p class="font-bold">Access your file from anywhere</p>
         <p class="text-center max-w-sm">The ability to use a smartphone, tablet or computer to access your account means your files follow you everywhere.</p>
       </div>
     </section>
-    <section class="flex flex-col md:flex-row gap-6 px-10 py-16">
+    <section class="flex flex-col items-center md:flex-row gap-6 px-10 py-16 bg-white dark:bg-slate-900 dark:text-white">
       <div class="max-w-lg">
         <img src="src/assets/images/illustration-stay-productive.png" alt="" class="object-cover">
       </div>
@@ -72,8 +82,10 @@
         </a>
       </div>
     </section>
-    <section class="testimonials flex flex-wrap items-center justify-center gap-6 py-16 px-10 bg-gray-100">
-      <div class="flex flex-col gap-6 basis-sm">
+    <section id="testimonials" class="flex flex-wrap items-center justify-center gap-6 py-16 px-10 relative 
+    dark:bg-slate-900 dark:text-white">
+      <img src="src/assets/images/bg-quotes.png" alt="" class="absolute top-5 left-20 -z-1">
+      <div class="flex flex-col gap-6 basis-sm bg-gray-100 rounded-lg p-6 dark:bg-slate-800">
         <p class="font-semibold">
           Fylo has improved our team productivity by an order de magnitude. Since making the switch our team has become a well-oiled collaboration machine
         </p>
@@ -85,7 +97,7 @@
           </div>
         </div>
       </div>
-      <div class="flex flex-col gap-6 basis-sm">
+      <div class="flex flex-col gap-6 basis-sm bg-gray-100 rounded-lg p-6 dark:bg-slate-800">
         <p class="font-semibold">
           Fylo has improved our team productivity by an order de magnitude. Since making the switch our team has become a well-oiled collaboration machine
         </p>
@@ -97,7 +109,7 @@
           </div>
         </div>
       </div>
-      <div class="flex flex-col gap-6 basis-sm">
+      <div class="flex flex-col gap-6 basis-sm bg-gray-100 rounded-lg p-6 dark:bg-slate-800">
         <p class="font-semibold">
           Fylo has improved our team productivity by an order de magnitude. Since making the switch our team has become a well-oiled collaboration machine
         </p>
@@ -110,17 +122,18 @@
         </div>
       </div>
     </section>
-    <section class="contact px-20 py-20 bg-white">
-      <div class="flex flex-col items-center gap-6 bg-gray-300 rounded-lg p-6 max-w-3xl mx-auto">
+    <section class="contact px-20 py-20 bg-white dark:bg-slate-900">
+      <div class="flex flex-col items-center gap-6 bg-gray-300 
+      rounded-lg p-6 max-w-3xl mx-auto  dark:text-white dark:bg-slate-800">
         <h2>Get early access today</h2>
         <p>It only takes a minute to sign up and our free starter tier is extremely generous. If you have any questions, our support team would be happy to help you.</p>
         <form class="flex flex-col md:flex-row gap-6 w-full">
-          <input type="text" class="p-4 rounded-full flex-1 bg-white" placeholder="email@example.com">
-          <button class="bg-cyan-300 py-2 px-6 rounded-full">Get Started For Free</button>
+          <input type="text" class="p-4 rounded-full flex-1 bg-white dark:text-gray-600" placeholder="email@example.com">
+          <button class="bg-cyan-300 py-2 px-6 rounded-full text-black">Get Started For Free</button>
         </form>
       </div>
     </section>
-    <footer class="flex flex-col md:flex-row justify-between gap-6 px-20 py-10 bg-slate-900 text-white">
+    <footer class="flex flex-col md:flex-row justify-between gap-6 px-20 py-10 bg-slate-800 text-white">
       <div class="flex flex-col gap-6">
         <div class="flex gap-4">
           <img src="src/assets/images/icon-phone.svg" alt="">
